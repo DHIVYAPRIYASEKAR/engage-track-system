@@ -29,8 +29,8 @@ const CustomTooltip = ({ active, payload, label }: any) => {
     return (
       <div className="bg-card p-2 border rounded-md shadow-sm">
         <p className="font-medium">{label}</p>
-        <p className="text-xs text-brand">{`Actual: ${payload[0].value} hrs`}</p>
-        <p className="text-xs text-neutral-dark">{`Expected: ${payload[1].value} hrs`}</p>
+        <p className="text-xs text-brand">{`Actual: ${payload[0]?.value || 0} hrs`}</p>
+        <p className="text-xs text-neutral-dark">{`Expected: ${payload[1]?.value || 0} hrs`}</p>
       </div>
     );
   }
@@ -39,7 +39,7 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 
 const ProductivityChart: React.FC<ProductivityChartProps> = ({ data, className }) => {
   return (
-    <Card className={className}>
+    <Card className={cn(className)}>
       <CardHeader>
         <CardTitle className="text-sm font-medium">Weekly Productivity</CardTitle>
       </CardHeader>
