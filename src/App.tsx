@@ -9,7 +9,10 @@ import Dashboard from "./pages/Dashboard";
 import Employees from "./pages/Employees";
 import Projects from "./pages/Projects";
 import TimeTracking from "./pages/TimeTracking";
-import FeatureInProgress from "./pages/FeatureInProgress";
+import Schedule from "./pages/Schedule";
+import Analytics from "./pages/Analytics";
+import Notifications from "./pages/Notifications";
+import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -43,17 +46,22 @@ const App = () => (
           } />
           <Route path="/schedule" element={
             <AppLayout>
-              <FeatureInProgress feature="Schedule" />
+              <Schedule />
             </AppLayout>
           } />
           <Route path="/analytics" element={
             <AppLayout>
-              <FeatureInProgress feature="Analytics" />
+              <Analytics />
+            </AppLayout>
+          } />
+          <Route path="/notifications" element={
+            <AppLayout>
+              <Notifications />
             </AppLayout>
           } />
           <Route path="/settings" element={
             <AppLayout>
-              <FeatureInProgress feature="Settings" />
+              <Settings />
             </AppLayout>
           } />
           <Route path="*" element={<NotFound />} />

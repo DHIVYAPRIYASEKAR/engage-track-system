@@ -1,5 +1,6 @@
 
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Bell, Search, Menu, User, Settings } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -12,12 +13,47 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import NotificationBell, { NotificationItem } from '@/components/ui/notification';
 
 interface HeaderProps {
   onToggleSidebar: () => void;
 }
 
 const Header: React.FC<HeaderProps> = ({ onToggleSidebar }) => {
+  const [notifications, setNotifications] = useState<NotificationItem[]>([
+    {
+      id: '1',
+      title: 'Task Assignment',
+      description: 'You have been assigned to a new task',
+      time: '5m ago',
+      read: false,
+    },
+    {
+      id: '2',
+      title: 'Meeting Reminder',
+      description: 'Team meeting starts in 15 minutes',
+      time: '15m ago',
+      read: false,
+    },
+    {
+      id: '3',
+      title: 'Project Update',
+      description: 'The Marketing project has been updated',
+      time: '1h ago',
+      read: true,
+    },
+  ]);
+
+  const handleMarkAsRead = (id: string) => {
+    setNotifications(notifications.map(notification => 
+      notification.id === id ? { ...notification, read: true } : notification
+    ));
+  };
+
+  const handleMarkAllAsRead = () => {
+    setNotifications(notifications.map(notification => ({ ...notification, read: true })));
+  };
+
   return (
     <header className="sticky top-0 z-30 w-full bg-background/90 backdrop-blur-sm border-b border-border">
       <div className="container flex h-16 items-center justify-between px-4">
@@ -35,10 +71,11 @@ const Header: React.FC<HeaderProps> = ({ onToggleSidebar }) => {
         </div>
 
         <div className="flex items-center gap-4">
-          <Button variant="ghost" size="icon" className="relative">
-            <Bell className="h-5 w-5" />
-            <span className="absolute top-1 right-1 h-2 w-2 rounded-full bg-brand animate-pulse-light" />
-          </Button>
+          <NotificationBell 
+            notifications={notifications}
+            onMarkAsRead={handleMarkAsRead}
+            onMarkAllAsRead={handleMarkAllAsRead}
+          />
           
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -59,13 +96,23 @@ const Header: React.FC<HeaderProps> = ({ onToggleSidebar }) => {
                 </div>
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>
-                <User className="mr-2 h-4 w-4" />
-                <span>Profile</span>
+              <DropdownMenuItem asChild>
+                <Link to="/settings">
+                  <User className="mr-2 h-4 w-4" />
+                  <span>Profile</span>
+                </Link>
               </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Settings className="mr-2 h-4 w-4" />
-                <span>Settings</span>
+              <DropdownMenuItem asChild>
+                <Link to="/settings">
+                  <Settings className="mr-2 h-4 w-4" />
+                  <span>Settings</span>
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link to="/notifications">
+                  <Bell className="mr-2 h-4 w-4" />
+                  <span>Notifications</span>
+                </Link>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem>
