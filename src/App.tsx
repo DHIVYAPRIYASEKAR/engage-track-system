@@ -7,6 +7,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AppLayout from "./components/layout/AppLayout";
 import Dashboard from "./pages/Dashboard";
 import Employees from "./pages/Employees";
+import Projects from "./pages/Projects";
+import TimeTracking from "./pages/TimeTracking";
 import FeatureInProgress from "./pages/FeatureInProgress";
 import NotFound from "./pages/NotFound";
 
@@ -31,12 +33,12 @@ const App = () => (
           } />
           <Route path="/projects" element={
             <AppLayout>
-              <FeatureInProgress feature="Projects" />
+              <Projects />
             </AppLayout>
           } />
           <Route path="/time-tracking" element={
             <AppLayout>
-              <FeatureInProgress feature="Time Tracking" />
+              <TimeTracking />
             </AppLayout>
           } />
           <Route path="/schedule" element={
