@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,33 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Custom colors for employee tracking system
+				brand: {
+					DEFAULT: '#7E69AB',
+					light: '#9b87f5',
+					dark: '#5E4C88'
+				},
+				neutral: {
+					DEFAULT: '#8E9196',
+					light: '#aaadb0',
+					dark: '#1A1F2C'
+				},
+				success: {
+					DEFAULT: '#4CAF50',
+					light: '#A5D6A7'
+				},
+				warning: {
+					DEFAULT: '#FFC107',
+					light: '#FFE082'
+				},
+				danger: {
+					DEFAULT: '#F44336',
+					light: '#EF9A9A'
+				},
+				accent2: {
+					DEFAULT: '#D3E4FD',
+					dark: '#81A1C1'
 				}
 			},
 			borderRadius: {
@@ -84,11 +112,31 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'fade-in': {
+					'0%': {
+						opacity: '0',
+						transform: 'translateY(10px)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'translateY(0)'
+					}
+				},
+				'pulse-light': {
+					'0%, 100%': {
+						opacity: '1'
+					},
+					'50%': {
+						opacity: '0.7'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fade-in 0.5s ease-out',
+				'pulse-light': 'pulse-light 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
 			}
 		}
 	},
