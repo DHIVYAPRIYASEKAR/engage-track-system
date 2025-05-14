@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Bell, Search, Menu, User } from 'lucide-react';
+import { Bell, Search, Menu, User, Settings } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';

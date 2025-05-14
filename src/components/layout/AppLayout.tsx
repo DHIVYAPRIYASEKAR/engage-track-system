@@ -18,7 +18,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
   };
 
   return (
-    <SidebarProvider collapsed={sidebarCollapsed} onCollapsedChange={setSidebarCollapsed}>
+    <SidebarProvider defaultCollapsed={sidebarCollapsed} onCollapsedChange={setSidebarCollapsed}>
       <div className="min-h-screen flex w-full bg-background">
         <AppSidebar collapsed={sidebarCollapsed} onToggleCollapse={toggleSidebar} />
         <div className="flex-1 flex flex-col min-h-screen overflow-hidden">
